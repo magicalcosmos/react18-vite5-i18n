@@ -1,3 +1,13 @@
 {
-    "explorer": "探索{count}次"
+    "explorer": "elajahi {{count}}x",
+    "galaxy_plain": "Galaksi biasa",
+    "galaxy_advanced": "Galaksi tingkat tinggi",
+    "confirm_info": "Konfirmasi habiskan {{diamond}} diamond untuk menjelajah？",
+    "think_about": "Pertimbangkan lagi",
+    "confirm": "Konfirmasi",
+    "enjoy_prize": "Terima dengan senang hati",
+    "explorer_again": "Jelajahi lagi",
+    "rule": "Aturan",
+    "top_up": "Top up",
+    "gift": "Gift"
 }

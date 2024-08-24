@@ -1,0 +1,378 @@
+.main {
+    background: #141028;
+    height: 100%;
+    left: 0;
+    // opacity: .7;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.content {
+    background: url("@/assets/images/bg-plain.webp") center bottom no-repeat ;
+    background-size: contain;
+    bottom: 0;
+    height: 1180px;
+    left: 0;
+    padding: 24px;
+    position: absolute;
+    width: 100%;
+}
+
+.content-advanced {
+    @extend .content;
+
+    background: url("@/assets/images/bg-advanced.webp") center bottom no-repeat;
+    background-size: contain;
+}
+
+.head {
+    left: 0;
+    overflow: hidden;
+    text-align: center;
+    padding: 0 24px;
+    position: absolute;
+    top: 24px;
+    width: 100%;
+
+    img, span {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+
+.close {
+    float: left;
+    height: 42px;
+    margin-right: 24px;
+    width: 42px;
+}
+
+.notice {
+    height: 40px;
+    margin-right: 5px;
+    position: relative;
+    top: 3px;
+    width: 41px;
+}
+
+.notice-message {
+    position: relative;
+}
+
+.message {
+    color: #BFDCFF;
+    font-size: 24px;
+    max-width: 320px;
+    overflow: hidden;
+    position: relative;
+    top: 5px;
+    white-space: nowrap;
+}
+
+.rules {
+    float: right;
+    height: 66px;
+    margin-right: 24px;
+    width: 66px;
+}
+
+.rules-id {
+    height: 43px;
+    margin-top:20px;
+    width: 95px;
+}
+
+
+.title {
+    object-fit: fill;
+    width: 100%;
+}
+
+.galaxy-zh {
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    width: 100%;
+
+    & > ul {
+        left: 50%;
+        position: absolute;
+        top: 0;
+        margin-left: -115px;
+        width: 250px;
+    }
+
+    & > ul > li {
+        font-size: 26px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 15px;
+    }
+}
+
+.galaxy-id {
+    @extend .galaxy-zh;
+
+    & > ul {
+        left: 50%;
+        position: absolute;
+        top: 0;
+        margin-left: -240px;
+        text-align: center;
+        width: 500px;
+    }
+
+    & > ul > li {
+        font-size: 26px;
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 38px;
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.line-zh {
+    background: linear-gradient( 168deg, #FFFFFF 0%, #FF3ABA 100%);
+    border-radius: 4px;
+    height: 8px;
+    left: 35px;
+    position: absolute;
+    top: 42px;
+    width: 34px;
+}
+
+.line-right-zh {
+    @extend .line-zh;
+
+    left: 155px;
+}
+
+.line-id {
+    @extend .line-zh;
+
+    left: 80px;
+}
+
+.line-right-id {
+    @extend .line-right-zh;
+
+    left: 300px;
+}
+
+.galaxy-plain {
+    color: #9C7EFF;
+}
+
+.galaxy-selected {
+    background: linear-gradient(82.74748796293133deg, #EEEEEE 0%, #FF60C7 100%);
+    height: 37px;
+    font-family: PingFangTC, PingFangTC;
+    font-weight: 500;
+    color: #E2F6FF;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.galaxy-left-zh, .galaxy-right-zh {
+    margin-top: -66px;
+}
+.galaxy-left-id, .galaxy-right-id {
+    margin-top: -50px;
+}
+
+.galaxy-left-zh {
+    background: url("@/assets/images/zh/galaxy-left.png") no-repeat;
+    background-size: contain;
+    float: left;
+    height: 162px;
+    margin-left: -24px;
+    width: 287px;
+}
+
+.galaxy-right-zh {
+    background: url("@/assets/images/zh/galaxy-right.png") no-repeat;
+    background-size: contain;
+    float: right;
+    height: 162px;
+    margin-right: -24px;
+    width: 287px;
+}
+
+.galaxy-left-id {
+    @extend .galaxy-left-zh;
+    background: url("@/assets/images/id/galaxy-left.png") no-repeat;
+    background-size: contain;
+    height: 122px;
+    width: 125px;
+}
+
+.galaxy-right-id {
+    @extend .galaxy-right-zh;
+    @extend .galaxy-left-id;
+
+    background: url("@/assets/images/id/galaxy-right.png") no-repeat;
+    background-size: contain;
+}
+
+.bubbles {
+    position: relative;
+    height: 590px;
+    top: -10px;
+    width: 100%;
+
+    & > span {
+        display: inline-block;
+        height: 120px;
+        position: absolute;
+        width: 120px;
+
+        & > span {
+            background: url("@/assets/images/bubble.png") no-repeat;
+            background-size: contain;
+            display: inline-block;
+            height: 120px;
+            position: absolute;
+            width: 120px;
+        }
+    }
+}
+
+.bubble {
+    background: url("@/assets/images/bubble.png") no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 120px;
+    position: absolute;
+    width: 120px;
+}
+
+.bubble-active {
+    background: url("@/assets/images/bubble-active.png") no-repeat;
+    background-size: contain;
+    height: 161px !important;
+    left: -22px;
+    position: relative;
+    top: -22px;
+    width: 161px !important;
+}
+
+.bubble1 {
+    left: 20px;
+    top: 187px;
+}
+
+.bubble2 {
+    left: 120px; 
+    top: 83px;
+}
+
+.bubble3 {
+    left: 284px;
+    top: 10px;
+}
+
+.bubble4 {
+    left: 458px;
+    top: 0;
+}
+
+.bubble5 {
+    left: 595px;
+    top: 26px;
+}
+
+.bubble6 {
+    left: 600px;
+    top: 187px;
+}
+
+.bubble7 {
+    left: 520px;
+    top: 338px;
+}
+
+.bubble8 {
+    left: 355px;
+    top: 414px;
+}
+
+.bubble9 {
+    left: 162px;
+    top: 425px;
+}
+.bubble10 {
+    left: -10px;
+    top: 352px;
+}
+
+
+.btns {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+
+    & > div {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: top;
+
+    
+        &:last-child {
+            margin: 0;
+        }
+
+        img {
+            height: 20px;
+            width: 22px;
+        }
+
+        em {
+            color: #fff;
+            font-size: 24px;
+            position: relative;
+            top: -3px;
+        }
+    }
+}
+
+.gan {
+    color: #fff;
+    display: block;
+    font-size: 36px;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.diamond {
+    display: block;
+    text-align: center;
+    width: 100%;
+
+    img {
+        margin-right: 5px;
+    }
+}
+
+.btn-one {
+    background: url("@/assets/images/one.png") no-repeat;
+    background-size: contain;
+    display: inline-block;
+    height: 121px;
+    width: 220px;
+}
+
+.btn-ten {
+    @extend .btn-one;
+    background-image: url("@/assets/images/ten.png");
+}
+
+.btn-hundred {
+   @extend .btn-one;
+   background-image: url("@/assets/images/hundred.jpg");
+}

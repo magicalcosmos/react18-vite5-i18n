@@ -1,3 +1,13 @@
 {
-    "explorer": "探索{{count}}次"
+    "explorer": "探索{{count}}次",
+    "galaxy_plain": "普通星系",
+    "galaxy_advanced": "高级星系",
+    "confirm_info": "是否确认花费{{diamond}}钻进行探索？",
+    "think_about": "再想想",
+    "confirm": "确认",
+    "enjoy_prize": "开心收下",
+    "explorer_again": "再次探索",
+    "rule": "活动规则",
+    "top_up": "首充好礼",
+    "gift": "赠送"
 }

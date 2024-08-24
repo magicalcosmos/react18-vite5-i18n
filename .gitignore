@@ -3,3 +3,5 @@
 .vim
 .nvim
 .history
+**/.DS_Store
+dist

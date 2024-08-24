@@ -1,0 +1,79 @@
+.main{  
+    align-items: center;
+    display: flex;  
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.content-zh {
+    height: 302px;
+    background: #06051F;
+    border-radius: 41px;
+    opacity: 0.85;
+    position: relative;
+    width: 566px;
+}
+
+.content-id {
+    @extend .content-zh;
+
+    width: 676px;
+}
+
+.message {
+    color: #F4AE80;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 77px;
+}
+
+.btns {
+    margin-top: 45px;
+    text-align: center;
+
+    & > span {
+        border: 1px solid #FFC86C;
+        border-radius: 35px;
+        display: inline-block;
+        font-size: 28px;
+        height: 70px;
+        line-height: 70px;
+        text-align: center;
+        vertical-align: top;
+        margin-right: 15px;
+        width: 203px;
+
+        &:last-child {
+            margin: 0;
+        }
+    }
+}
+
+.think-about-zh {
+    color: #FFC86C !important;
+    margin-right: 20px;
+}
+
+.think-about-id {
+    color: #FFC86C;
+    width: 280px !important;
+}
+
+.confirm-zh {
+    background: linear-gradient( 168deg, #FFEEA0 0%, #FFB552 100%);
+    border: none;
+    color: #553125;
+}
+
+.confirm-id {
+    @extend .think-about-id;
+
+    background: linear-gradient( 168deg, #FFEEA0 0%, #FFB552 100%);
+    border: none;
+    color: #553125;
+}

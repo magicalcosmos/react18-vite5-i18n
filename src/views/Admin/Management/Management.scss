@@ -1,0 +1,15 @@
+.Management {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+
+    h1 {
+        background: linear-gradient(-180deg, #EEEEEE 0%, #FF60C7 100%,);
+        font-size: 32px;
+        font-weight: bold;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
