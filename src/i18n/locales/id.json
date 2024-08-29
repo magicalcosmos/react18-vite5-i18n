@@ -9,5 +9,6 @@
     "explorer_again": "Jelajahi lagi",
     "rule": "Aturan",
     "top_up": "Top up",
-    "gift": "Gift"
+    "gift": "Gift",
+    "congratratulations": "Selamat kepada {{name}} atas mendapatkan {{gifts}}!"
 }

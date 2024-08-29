@@ -8,7 +8,7 @@ const App = () => {
   const { t, i18n } = useTranslation();
   const { getParamByKey } = useLocation();
   const lang = getParamByKey('lang');
-  i18n.changeLanguage(lang || 'zh');
+  i18n.changeLanguage(lang || 'id');
 
   return (
     <>

@@ -57,6 +57,11 @@
         border-radius: 50%;
     }
 
+    .gift-name {
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
     .adm-page-indicator-horizontal .adm-page-indicator-dot-active {
         background: #fff;
         border-radius: 8px;

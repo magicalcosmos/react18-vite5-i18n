@@ -12,9 +12,9 @@ const DataSettings = React.memo(() => {
   const [tabs, setTabs] = useState([]);
 
   const getContent = (key) => {
-    const dataSource = data[key];
-    
-    data[key].map((item) => {
+    const dataSource = Object.values(data[key]);
+
+    dataSource.map((item) => {
         for(const el in item) {
           if (item[el] instanceof Array) {
             item[el] = item[el].join(',');

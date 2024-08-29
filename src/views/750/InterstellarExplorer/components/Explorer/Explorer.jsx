@@ -96,7 +96,7 @@ const Explorer = () => {
 
     const isEnoughDiamond = (count, callback) => {
         const drawType = count === 10 ? 'min' : count === 100 ? 'medium' : 'max';
-        Get(`/api/diamond/${searchParams.get('uid')}?drawType=${drawType}&userType=${tab}`).then((res) => {
+        Get(`/bx-api/diamond/${searchParams.get('uid')}?drawType=${drawType}&userType=${tab}`).then((res) => {
             switch (res.code) {
                 case 204:
                     jsBridgeTopup();
@@ -142,11 +142,24 @@ const Explorer = () => {
 
     const draw = (callback) => {
         const drawType = diamondCount === 10 ? 'min' : diamondCount === 100 ? 'medium' : 'max';
-        Post(`/api/draw/${searchParams.get('uid')}?userType=${tab}&drawType=${drawType}`).then((res) => {
+        Post(`/api/draw/${searchParams.get('uid')}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+           body: JSON.stringify({
+            userType: tab,
+            drawType,
+            avatar: searchParams.get('avatar'), 
+            nickName: searchParams.get('nickName'), 
+            roomId: searchParams.get('roomId')
+           }),
+        }).then((res) => {
             const timeout = setTimeout(() => {
                 clearTimeout(timeout);
                 setIsStop(true);
                 if (res.code === 200) {
+                    // 成功后重新拉取数据
+                    getCongratulations();
                     if (res.data && res.data.length > 1) {
                         setPrizesPopVisible(true);
                     } else {
@@ -163,6 +176,29 @@ const Explorer = () => {
         }).catch(() => {});
 
     };
+
+    const getCongratulations = () => {
+        Get('/api/interstellar-explorer?size=60').then((res) => {
+            if (res.code === 200) {
+                let message = '';
+                res.data.forEach(item => {
+                    const gifts = JSON.parse(item['giftName']).join('、');
+                    message += t('congratratulations', {
+                        name: item.nickName,
+                        gifts,
+                    });
+                });
+                setMarqueMessage(message);
+            }
+
+            
+        }).catch(() => {
+        });
+    }
+
+    useEffect(() => {
+        getCongratulations();
+    }, []);
 
     useEffect(() => {
         let timeoutId = null;
@@ -190,11 +226,11 @@ const Explorer = () => {
                                 <span className={`${styleModule['message']}`}><Marquee>{marqueMessage}</Marquee></span>
                             </span> : null
                         }
-                        <img 
+                        {/* <img 
                         className={`${styleModule['rules']} ${styleModule['rules-' + currentLang]}`} 
                         src={`/images/${currentLang}/icon-rules.png`} 
                         onClick={() => setRulesPopVisible(true)}
-                        />
+                        /> */}
                     </div>
 
                     {/* title */} 

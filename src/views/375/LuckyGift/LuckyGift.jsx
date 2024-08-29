@@ -6,6 +6,8 @@ import { useLocation } from "react-router-dom";
 import iconLuckyPrice from '@/assets/images/icon_lucky_price.png';
 import iconLuckyAmount from '@/assets/images/icon_lucky_amount.png';
 import iconLuckyArrow from '@/assets/images/icon_lucky_arrow.png';
+import Marquee from "react-fast-marquee";
+
 const groupData = (data, column = 8) => {
     const newData = [];
     if (data.length > column) {
@@ -59,7 +61,15 @@ const LuckyGift = () => {
                 <div>
                     <img className='item-icon' src={`${globalURL}/icons/${el['giftId']}.png`} />
                 </div>
-                <div className='gift-name'>{el[`giftName${currentLang.capitalizeFirstLetter()}`]}</div>
+                <div className='gift-name'>
+                    {
+                        el[`giftName${currentLang.capitalizeFirstLetter()}`].length > 10 ?
+                        <Marquee speed={10}>
+                        {el[`giftName${currentLang.capitalizeFirstLetter()}`]}
+                    </Marquee> :
+                        el[`giftName${currentLang.capitalizeFirstLetter()}`]
+                    }
+                </div>
                 <div>
                     <img src={iconLuckyPrice} className='diamond'/>
                     <span className='value'>{el['value']}</span>
@@ -79,7 +89,7 @@ const LuckyGift = () => {
     };
 
     const getUserData = () => {
-        Get(`/api/diamond/${searchParams.get('uid')}`).then((res) => {
+        Get(`/bx-api/diamond/${searchParams.get('uid')}`).then((res) => {
             if (res.code === 200) {
                 setUserData(res.data);
             }
@@ -113,6 +123,7 @@ const LuckyGift = () => {
             uid, 
             avatar, 
             nickname, 
+            anchorId: searchParams.get('anchorId'),
             giftId: currentObj.giftId
            }),
         }).then((res) => {

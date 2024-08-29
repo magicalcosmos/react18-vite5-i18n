@@ -9,5 +9,6 @@
     "explorer_again": "再次探索",
     "rule": "活动规则",
     "top_up": "首充好礼",
-    "gift": "赠送"
+    "gift": "赠送",
+    "congratratulations": "恭喜 {{name}} atas 获得 {{gifts}}！"
 }

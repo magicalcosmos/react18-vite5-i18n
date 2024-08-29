@@ -71,6 +71,10 @@ export default defineConfig({
         target: 'http://localhost:8088',
         changeOrigin: true,
       },
+      '/bx-api': {
+        target: 'http://localhost:8087',
+        changeOrigin: true,
+      },
     }
   }
 });
