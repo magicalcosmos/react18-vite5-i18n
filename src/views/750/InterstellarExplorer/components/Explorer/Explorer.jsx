@@ -12,6 +12,7 @@ import RulesPop from '../RulesPop/RulesPop';
 import { useEffect, useState } from "react";
 import { Get, Post } from '@/utils/Ajax';
 import { useLocation } from "react-router-dom";
+import { useDevice } from '@/hooks/Tools';
 
 const time = 80;
 const fixedTime = 1000 * 60 * 60 * 60;
@@ -46,6 +47,8 @@ const Explorer = () => {
     const [bubbleIndex, setBubbleIndex] = useState(0);
     const [isStop, setIsStop] = useState(true);
     const [prizesPopData, setPrizesPopData] = useState([]);
+    const { getOS } = useDevice();
+    const device = getOS();
 
     const getBubbles = () => {
         return (<>
@@ -94,12 +97,30 @@ const Explorer = () => {
         });
     };
 
+    const handleClose = () => {
+        if (device === 'android' || window.AndroidJS) {
+            window.AndroidJS.jsBridgeClose();
+        } else if(device === 'iOS' || window.webkit && window.webkit.messageHandlers){
+            window.webkit.messageHandlers.jsBridgeClose.postMessage({});
+        }
+    };
+    /**
+     * 充值
+     */
+    const handleTopup = () => {
+        if (device === 'android' || window.AndroidJS) {
+            window.AndroidJS.jsBridgeTopup();
+        } else if(device === 'iOS' || window.webkit && window.webkit.messageHandlers){
+            window.webkit.messageHandlers.jsBridgeTopup.postMessage({});
+        }
+    };
+
     const isEnoughDiamond = (count, callback) => {
         const drawType = count === 10 ? 'min' : count === 100 ? 'medium' : 'max';
         Get(`/bx-api/diamond/${searchParams.get('uid')}?drawType=${drawType}&userType=${tab}`).then((res) => {
             switch (res.code) {
                 case 204:
-                    jsBridgeTopup();
+                    handleTopup();
                     break;
                 case 200:
                     typeof callback === 'function' && callback();
@@ -115,29 +136,6 @@ const Explorer = () => {
             }
 
         }).catch(() => {});
-    };
-
-    const getMarqueMesage = () => {
-        Post('https://api.hihugging.com/chatroomMessage/commonSend', {
-            "bizData":{
-                "ext":{
-                    "roomTitle":"风花雪月的房间"
-                },
-                "leftImg":"https://w2.heyhugging.com/hugging-user/1E57D436-5EC4-46F9-A82B-289CB663D05C.jpg",
-                "bg":"https://w3.heyhugging.com/hugging-config/4ca133a5725e41d0b7e8dafdcc15e826.png",
-                "type":1,
-                "title":"恭喜",
-                "content":"取得熱門清單Top 1"
-            },
-            "code":"1803",
-            "roomId":"4fb5626b6ddf4bdb99001f4567721dfe",
-            "uid":240870960050160042,
-            "secret":"6fa56ccec6ba49b99e04849089559d13"
-        }).then((res) => {
-            
-        }).catch(() => {
-
-        });
     };
 
     const draw = (callback) => {
@@ -219,7 +217,7 @@ const Explorer = () => {
                 <div className={styleModule[tab === 2 ? 'content-advanced' : 'content']}>
                     {/* head */}
                     <div className={styleModule['head']}>
-                        <img className={styleModule['close']} src={iconClose} onClick={() => jsBridgeClose()}/>
+                        <img className={styleModule['close']} src={iconClose} onClick={() => handleClose()}/>
                         {
                             marqueMessage.length ? <span className={styleModule['notice-message']}>
                                 <img className={styleModule['notice']} src={iconNotice} />

@@ -14,7 +14,25 @@ export const useLocation = () => {
         }
         return '';
     };
+
     return {
-        getParamByKey,
+        getParamByKey
     }
 };
+
+export const useDevice = () => {
+    const getOS = () => {
+        const ua = navigator.userAgent;
+        if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            return 'iOS';
+        } else if (/android/i.test(ua)) {
+            return 'Android';
+        }
+        return 'Other';
+    };
+
+    return {
+        getOS,
+    }
+
+}
